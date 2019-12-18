@@ -5,19 +5,25 @@ if [ "$1" == "lua" ]; then
   lib="main.lua"
 elif [ "$1" == "rust" ]; then
   lib="main.rs"
+elif [ "$1" == "cpp" ]; then
+  lib="main.cc"
 else
   echo "Language not specified"
   exit 1
 fi
 
-arr=( `ascl $2 $3` )
-failure=1
+if [ "$2" == "-f" ]; then
+  cp ~/Develop/playground/atcoder/lib/"$lib" "$3"
+else
+  arr=( `ascl $2 $3` )
+  failure=1
 
-for i in ${arr[@]}; do
-  mkdir $i
-  if [ "$?" == "$failure" ]; then
-    echo "failed"
-    exit 1
-  fi
-  cp ~/Develop/playground/atcoder/lib/"$lib" "$i"
-done
+  for i in ${arr[@]}; do
+    mkdir $i
+    if [ "$?" == "$failure" ]; then
+      echo "failed"
+      exit 1
+    fi
+    cp ~/Develop/playground/atcoder/lib/"$lib" "$i"
+  done
+fi

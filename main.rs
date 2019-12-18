@@ -1,10 +1,14 @@
 #[allow(unused_imports)]
 use std::io;
+#[allow(unused_imports)]
+use std::cmp::max;
+#[allow(unused_imports)]
+use std::cmp::min;
 
 #[allow(unused_macros)]
 macro_rules! get {
     ($i:ident) => {
-        let mut $i = String::new();
+        $i = String::new();
         io::stdin().read_line(&mut $i).ok();
     };
 }
@@ -30,6 +34,21 @@ macro_rules! max {
     };
 }
 
+#[allow(unused_macros)]
+macro_rules! min {
+    ($v:ident) => {
+        $v.iter().max().unwrap()
+    };
+}
+
+#[allow(unused_macros)]
+macro_rules! sort {
+    ($v:ident) => {
+        $v.as_mut_slice().sort()
+    };
+}
+
+#[allow(unused_variables)]
 #[allow(unused_mut)]
 fn main() {
 
