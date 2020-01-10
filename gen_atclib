@@ -13,17 +13,17 @@ else
 fi
 
 if [ "$2" == "-f" ]; then
-  cp ~/Develop/playground/atcoder/lib/"$lib" "$3"
+  cp ~/d/src/atcoder/atclib/"$lib" "$3"
 else
   arr=( `ascl $2 $3` )
   failure=1
 
   for i in ${arr[@]}; do
-    mkdir $i
+    mkdir -p $i
     if [ "$?" == "$failure" ]; then
       echo "failed"
       exit 1
     fi
-    cp ~/Develop/playground/atcoder/lib/"$lib" "$i"
+    cp ~/d/src/atcoder/atclib/"$lib" "$i"
   done
 fi
