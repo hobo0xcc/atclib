@@ -7,13 +7,15 @@ elif [ "$1" == "rust" ]; then
   lib="main.rs"
 elif [ "$1" == "cpp" ]; then
   lib="main.cc"
+elif [ "$1" == "py" ]; then
+  lib="main.py"
 else
   echo "Language not specified"
   exit 1
 fi
 
 if [ "$2" == "-f" ]; then
-  cp ~/d/src/atcoder/atclib/"$lib" "$3"
+  cp /Users/hobo/Develop/playground/atcoder/lib/"$lib" "$3"
 else
   arr=( `ascl $2 $3` )
   failure=1
@@ -24,6 +26,6 @@ else
       echo "failed"
       exit 1
     fi
-    cp ~/d/src/atcoder/atclib/"$lib" "$i"
+    cp /Users/hobo/Develop/playground/atcoder/lib/"$lib" "$i"
   done
 fi
